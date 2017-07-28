@@ -1,5 +1,11 @@
+body {
+  background-color: #e8e8e7;
+}
 .App {
   text-align: center;
+  margin: 0 auto;
+  width: 900px;
+  padding: 20px;
 }
 
 .App-logo {
@@ -21,4 +27,8 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.complete {
+  text-decoration: line-through;
 }

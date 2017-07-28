@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import TextField from 'material-ui/TextField';
 import './App.css';
 
 class InputArea extends Component {
@@ -10,7 +11,7 @@ class InputArea extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.addTask(this.refs.task.value);
+    this.props.addTask(this.refs.task.getValue());
     this.refs.toDoForm.reset();
   }
 
@@ -18,12 +19,11 @@ class InputArea extends Component {
     return (
       <div className="App">
         <form onSubmit={this.handleSubmit} ref='toDoForm'>
-          <input type='text' onChange={this.handleChange} placeholder='Enter task!' ref='task'></input>
+          <TextField hintText='Add task' ref='task' />
         </form>
       </div>
     );
   }
 }
-
 
 export default InputArea;
