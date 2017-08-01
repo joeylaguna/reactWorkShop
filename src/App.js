@@ -16,22 +16,29 @@ class App extends Component {
     }
     this.addTask = this.addTask.bind(this);
     this.deleteItem = this.deleteItem.bind(this);
+    this.completeTask = this.completeTask.bind(this);
   }
 
   addTask(task) {
     let newObj = {};
     newObj.taskName = task;
+    newObj.taskComplete = false;
     this.setState({
       incompleteTasks: this.state.incompleteTasks.concat(newObj)
     });
   }
 
+  completeTask(index) {
+    let newState = this.state.incompleteTasks.slice();
+    newState[index].taskComplete = !newState[index].taskComplete;
+    this.setState({
+      incompleteTasks: newState
+    });
+  }
+
   deleteItem(index) {
-    console.log('here');
     let newTaskList = this.state.incompleteTasks.slice();
-    console.log(newTaskList);
     newTaskList.splice(index, 1);
-    console.log(newTaskList);
     this.setState({
       incompleteTasks: newTaskList
     });
@@ -43,7 +50,7 @@ class App extends Component {
       <div className="App">
         <Card>
         <InputArea addTask={this.addTask}/>
-        {this.state.showIncompleted ? <TaskList tasks={this.state.incompleteTasks}deleteItem={this.deleteItem} /> : ''}
+        {this.state.showIncompleted ? <TaskList tasks={this.state.incompleteTasks}deleteItem={this.deleteItem} completeTask={this.completeTask}/> : ''}
         </Card>
       </div>
       </MuiThemeProvider>

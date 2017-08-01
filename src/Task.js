@@ -26,16 +26,14 @@ class Task extends Component {
   }
 
   handleComplete() {
-    this.setState({
-      complete: !this.state.complete
-    })
+    this.props.completeTask(this.props.rowNumber);
   }
 
   render() {
     return (
       <TableRow key={this.props.key}>
-        {this.state.complete ? <TableRowColumn className='complete'>{this.props.item.taskName}</TableRowColumn> : <TableRowColumn>{this.props.item.taskName}</TableRowColumn>}
-        <TableRowColumn><Checkbox onClick={this.handleComplete}/></TableRowColumn>
+        {this.props.item.taskComplete ? <TableRowColumn className='complete'>{this.props.item.taskName}</TableRowColumn> : <TableRowColumn>{this.props.item.taskName}</TableRowColumn>}
+        <TableRowColumn><Checkbox onClick={this.handleComplete} checked={this.props.item.taskComplete}/></TableRowColumn>
         <TableRowColumn><FontIcon className='material-icons' hoverColor={'#00bcd4'} onClick={this.handleDelete}>delete</FontIcon></TableRowColumn>
       </TableRow>
     )

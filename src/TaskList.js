@@ -27,7 +27,7 @@ const TaskList = (props) => {
     <TableBody displayRowCheckbox={false}>
       {props.tasks.map((item, i) => {
         return (
-          <Task item={item} key={i} deleteItem={props.deleteItem}/>
+          <Task item={item} key={i} deleteItem={props.deleteItem} completeTask={props.completeTask}/>
         )
       })}
     </TableBody>
